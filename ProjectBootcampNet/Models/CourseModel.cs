@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectBootcampNet.Models
 {
+    [Keyless]
     public class CourseModel
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
