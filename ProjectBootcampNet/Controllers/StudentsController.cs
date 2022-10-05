@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectBootcampNet.DAL_Data_Access_Layer_;
+using ProjectBootcampNet.DTO;
 using ProjectBootcampNet.Models;
 using System.Security.Cryptography.X509Certificates;
 
@@ -35,12 +36,25 @@ namespace ProjectBootcampNet.Controllers
             return _student.GetByName(Lastname);
         }
         [HttpPost]
-        public IActionResult Post(StudentModel student)
+        public IActionResult Post(StudentAddDTO studentDto)
         {
             try
             {
+                var student = new StudentModel
+                {
+                    LastName = studentDto.LastName
+                   
+                };
+                var student1 = new StudentModel
+                {
+                    FirstMidName = studentDto.FirstMidName
+
+                };
+
+                var newStudent1 = _student.Insert(student1);
                 var newStudent = _student.Insert(student);
-                return CreatedAtAction("Get", new {id = newStudent.ID}, newStudent);
+                return CreatedAtAction("Get", new { id = newStudent.ID }, newStudent);
+                
             }
             catch (Exception ex)
             {

@@ -15,7 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
 
 
 //injekse untuk running 
-builder.Services.AddScoped<InterfaceStudent, StudentDAL>();
+builder.Services.AddScoped<InterfaceStudent, StudentDAL_EF>();
 
 var app = builder.Build();
 
